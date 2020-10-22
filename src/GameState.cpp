@@ -150,7 +150,7 @@ void MenuState::buttonPressed(int k)
             }
 			break;
 		}
-		case 9: //Start Button
+		case 9: //Start button
 		{
 			if (currentChoice == 0)
 			{
@@ -1447,7 +1447,7 @@ void TitleState::buttonPressed(int k)
 {
 	switch(k)
 	{
-		case SDLK_RETURN:
+		case 9: //Start button
 		{	
 			if (bgm)
 			{
@@ -1458,18 +1458,18 @@ void TitleState::buttonPressed(int k)
 			break;
 		}
 
-    	case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
-			if ( k == 0 ) 
-			{
-				if (bgm)
-				{
-					bgm->stop();
-					bgm->close();
-				}
-				gsm->setState(GameStateManager::LEVEL1_STATE);
-				break;
-				}
-		break;
+    	// case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
+		// 	if ( k == 0 ) 
+		// 	{
+		// 		if (bgm)
+		// 		{
+		// 			bgm->stop();
+		// 			bgm->close();
+		// 		}
+		// 		gsm->setState(GameStateManager::LEVEL1_STATE);
+		// 		break;
+		// 		}
+		// break;
 	}
 }
 void TitleState::buttonReleased(int k)
