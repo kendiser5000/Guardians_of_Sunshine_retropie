@@ -95,8 +95,6 @@ int GamePanel::run()
         currTime = SDL_GetTicks();
         deltaTime = (currTime - prevTime)/1000.0f;
 
-		//printf("%i joysticks were found.\n\n", SDL_NumJoysticks() );
-
     	SDL_JoystickEventState(SDL_ENABLE);
     	joystick = SDL_JoystickOpen(0); //joystick declared globally
 
@@ -114,8 +112,8 @@ void GamePanel::handleInputs()
 {
 	while (SDL_PollEvent(&event) != 0)
 	{
-		// printf("event type %d\n", event.type);
-		// printf("button %d\n", event.jbutton.button);
+		//printf("event type %d\n", event.type);
+		//printf("button %d\n", event.jbutton.button);
 
 		if (event.type == SDL_QUIT)
 		{
@@ -123,11 +121,12 @@ void GamePanel::handleInputs()
 		}
 		else if (event.type == 1539) //button press
 		{
-			//printf("key_down\n");
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyPressed(keyCode);
 
 			int button = event.jbutton.button;
+			printf("key_down: %d", button);
+
 			gsm->buttonPressed(button);
 		}
 		else if (event.type == 1540) //button up
@@ -136,6 +135,8 @@ void GamePanel::handleInputs()
 			//gsm->keyReleased(keyCode);
 
 			int button = event.jbutton.button;
+			printf("key_up: %d", button);
+			
 			gsm->buttonReleased(button);
 		}
 		else if (event.type == SDL_TEXTINPUT)
