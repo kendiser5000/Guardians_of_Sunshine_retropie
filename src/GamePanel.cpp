@@ -143,6 +143,16 @@ void GamePanel::handleInputs()
 		{
 			char *text = event.text.text;
 		}
+		else if (event.type == 1538) //hat
+		{
+			//int keyCode = event.key.keysym.sym;
+			//gsm->keyReleased(keyCode);
+
+			int button = event.jhat.hat;
+			printf("hat: %d", button);
+			
+			gsm->buttonReleased(button);
+		}
 	}
 	keyState = SDL_GetKeyboardState(NULL);
 }
