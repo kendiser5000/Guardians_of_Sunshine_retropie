@@ -57,6 +57,14 @@ void GameStateManager::keyReleased(int k)
 {
 	gameStates[currentState]->keyReleased(k);
 }
+void GameStateManager::buttonPressed(int k)
+{
+	gameStates[currentState]->buttonPressed(k);
+}
+void GameStateManager::buttonReleased(int k)
+{
+	gameStates[currentState]->buttonReleased(k);
+}
 
 void GameStateManager::loadState(int state)
 {

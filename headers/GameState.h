@@ -35,6 +35,8 @@ class GameState
 		virtual void draw() =0;
 		virtual void keyPressed(int k) =0;
 		virtual void keyReleased(int k) =0;
+		virtual void buttonPressed(int k) =0;
+		virtual void buttonReleased(int k) =0;
 };
 
 class MenuState : public GameState
@@ -54,6 +56,8 @@ class MenuState : public GameState
 		void draw();
 		void keyPressed(int k);
 		void keyReleased(int k);
+		void buttonPressed(int k);
+		void buttonReleased(int k);
 };
 
 class Level1State : public GameState
@@ -131,6 +135,8 @@ class Level1State : public GameState
         void draw();
         void keyPressed(int k);
         void keyReleased(int k);
+		void buttonPressed(int k);
+        void buttonReleased(int k);
 };
 
 class TitleState : public GameState
@@ -151,6 +157,8 @@ class TitleState : public GameState
         void draw();
         void keyPressed(int k);
         void keyReleased(int k);
+		void buttonPressed(int k);
+        void buttonReleased(int k);
 };
 class WinState : public GameState
 {
@@ -202,4 +210,6 @@ class WinState : public GameState
         void draw();
         void keyPressed(int k);
         void keyReleased(int k);
+		void buttonPressed(int k);
+        void buttonReleased(int k);
 };

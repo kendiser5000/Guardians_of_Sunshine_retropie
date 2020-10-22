@@ -38,4 +38,7 @@ class GameStateManager
 		void keyPressed(int k);
 		void keyReleased(int k);
 
+		void buttonPressed(int k);
+		void buttonReleased(int k);
+
 };

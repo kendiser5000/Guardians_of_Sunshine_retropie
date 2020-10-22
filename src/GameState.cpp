@@ -128,6 +128,50 @@ void MenuState::keyReleased(int k)
 
 }
 
+void MenuState::buttonPressed(int k)
+{
+	switch (k)
+	{
+		case SDLK_UP:
+		{
+			currentChoice--;
+			if (currentChoice < 0)
+			{
+				currentChoice = NUM_OPTIONS - 1;
+			}
+			break;
+		}
+		case SDLK_DOWN:
+		{
+			currentChoice++;
+            if (currentChoice >= NUM_OPTIONS)
+            {
+                currentChoice = 0;
+            }
+			break;
+		}
+		case SDLK_RETURN:
+		{
+			if (currentChoice == 0)
+			{
+				gsm->setState(GameStateManager::LEVEL1_STATE);
+			}
+			else if (currentChoice == 1)
+			{
+				//exit(0);
+				if (GamePanel::isRunningControl == NULL)
+					printf("isRunning cotrol is NULL\n");
+				*(GamePanel::isRunningControl) = false;
+			}
+			break;
+		}
+	}
+}
+void MenuState::buttonReleased(int k)
+{
+
+}
+
 
 //-------------------------------------
 
@@ -1002,6 +1046,7 @@ void Level1State::updateGameCamera()
     double y1 = bgTileMap->getY() - y;
     bgTileMap->setPosition((int)(tileMap->getX()+0), (int)(tileMap->getY()-66));
 }
+
 void Level1State::keyPressed(int k)
 {
 	double x = tileMap->getX();
@@ -1139,6 +1184,141 @@ void Level1State::keyReleased(int k)
 }
 
 
+void Level1State::buttonPressed(int k)
+{
+	double x = tileMap->getX();
+	double y = tileMap->getY();
+	double x1 = bgTileMap->getX() - x;
+	double y1 = bgTileMap->getY() - y;
+	int scroll_val = -5;
+	switch (k)
+    {
+        case SDLK_LEFT:
+        {
+			//player->setLeft(true);
+			gos_player->setLeft(true);
+			comboMove->setLeft(true);
+			//x -= scroll_val;
+			//x1 -= scroll_val;
+            break;
+        }
+		case SDLK_RIGHT:
+		{
+			//player->setRight(true);
+			gos_player->setRight(true);
+			comboMove->setRight(true);
+			//x += scroll_val;
+			//x1 += scroll_val;
+			break;
+		}
+		case SDLK_UP:
+		{
+			//player->setUp(true);
+			gos_player->setUp(true);
+			comboMove->setUp(true);
+			//y -= scroll_val;
+			//y1 -= scroll_val;
+			break;
+		}
+		case SDLK_DOWN:
+		{
+			//player->setDown(true);
+			gos_player->setDown(true);
+			comboMove->setDown(true);
+			//y += scroll_val;
+			//y1 += scroll_val;
+			break;
+		}
+		case SDLK_SPACE:
+		{
+			//player->setJumping(true);
+			gos_player->setJumping(true);
+			comboMove->setJumping(true);
+			break;
+		}
+		case SDLK_LSHIFT:
+		{
+			//player->setGliding(true);
+			break;
+		}
+		case SDLK_z:
+		{
+			//player->setScratching();
+			gos_player->setKicking();
+			comboMove->setSpin(true);
+			break;
+		}
+		case SDLK_x:
+		{
+			//player->setFiring();
+			gos_player->bombaAction();
+			break;
+		}
+		case SDLK_RETURN:
+		{	
+			gos_startmenu->setVisible(true);
+			break;
+		}
+	}
+	//tileMap->setPosition((int)x, (int)y);
+	//printf("x: %d, y: %d\n", (int)tileMap->getX(), (int)tileMap->getY());
+	//bgTileMap->setPosition((int)(tileMap->getX()+x1), (int)(tileMap->getY()+y1));
+}
+void Level1State::buttonReleased(int k)
+{
+	switch (k)
+    {
+        case SDLK_LEFT:
+        {
+            //player->setLeft(false);
+			gos_player->setLeft(false);
+            break;
+        }
+        case SDLK_RIGHT:
+        {
+            //player->setRight(false);
+			gos_player->setRight(false);
+            break;
+        }
+        case SDLK_UP:
+        {
+            //player->setUp(false);
+			gos_player->setUp(false);
+            break;
+        }
+        case SDLK_DOWN:
+        {
+            //player->setDown(false);
+			gos_player->setDown(false);
+            break;
+        }
+        case SDLK_SPACE:
+        {
+            gos_player->setJumping(false);
+            break;
+        }
+        case SDLK_LSHIFT:
+        {
+            //player->setGliding(false);
+			bgm->stop();
+			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
+			gsm->setState(GameStateManager::TITLE_STATE);
+            break;
+        }
+		case SDLK_RSHIFT:
+        {
+			bgm->stop();
+			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
+			*(GamePanel::isRunningControl) = false;
+            break;
+        }
+		case SDLK_RETURN:
+        {
+            gos_startmenu->setVisible(false);
+            break;
+        }
+    }
+}
 
 
 TitleState::TitleState(GameStateManager *gsm_, SDL_Renderer *renderTarget_)
@@ -1259,6 +1439,40 @@ void TitleState::keyPressed(int k)
 	}
 }
 void TitleState::keyReleased(int k)
+{
+
+}
+
+void TitleState::buttonPressed(int k)
+{
+	switch(k)
+	{
+		case SDLK_RETURN:
+		{	
+			if (bgm)
+			{
+				bgm->stop();
+				bgm->close();
+			}
+			gsm->setState(GameStateManager::LEVEL1_STATE);
+			break;
+		}
+
+    	case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
+			if ( k == 0 ) 
+			{
+				if (bgm)
+				{
+					bgm->stop();
+					bgm->close();
+				}
+				gsm->setState(GameStateManager::LEVEL1_STATE);
+				break;
+				}
+		break;
+	}
+}
+void TitleState::buttonReleased(int k)
 {
 
 }
@@ -1640,6 +1854,29 @@ void WinState::keyPressed(int k)
     }
 }
 void WinState::keyReleased(int k)
+{
+
+}
+
+void WinState::buttonPressed(int k)
+{
+	if (state != FINAL)
+		return;
+	switch(k)
+    {
+        case SDLK_RETURN:
+        {
+            gsm->setState(GameStateManager::TITLE_STATE);
+            break;
+        }
+		case SDLK_RSHIFT:
+        {
+            *(GamePanel::isRunningControl) = false;
+            break;
+        }
+    }
+}
+void WinState::buttonReleased(int k)
 {
 
 }

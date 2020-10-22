@@ -6,6 +6,7 @@
 bool *GamePanel::isRunningControl;
 int GamePanel::WINDOW_WIDTH;
 int GamePanel::WINDOW_HEIGHT;
+SDL_Joystick *joystick;
 
 GamePanel::GamePanel()
 {
@@ -94,7 +95,18 @@ int GamePanel::run()
         currTime = SDL_GetTicks();
         deltaTime = (currTime - prevTime)/1000.0f;
 
-		handleInputs();
+		//Initialize Controllers
+		if (SDL_Init( SDL_INIT_VIDEO | SDL_INIT_JOYSTICK ) < 0)
+    	{
+        	fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+        	exit(1);
+    	}
+		printf("%i joysticks were found.\n\n", SDL_NumJoysticks() );
+
+    	SDL_JoystickEventState(SDL_ENABLE);
+    	joystick = SDL_JoystickOpen(0); //joystick declared globally
+
+		handleInputs(); //Init gamepad here?
 		update();
 		draw();
 		drawToScreen();
@@ -108,20 +120,26 @@ void GamePanel::handleInputs()
 {
 	while (SDL_PollEvent(&event) != 0)
 	{
-		//PrintEvent(&event);
+
 		if (event.type == SDL_QUIT)
 		{
 			isRunning = false;
 		}
 		else if (event.type == SDL_KEYDOWN)
 		{
-			int keyCode = event.key.keysym.sym;
-			gsm->keyPressed(keyCode);
+			//int keyCode = event.key.keysym.sym;
+			//gsm->keyPressed(keyCode);
+
+			int button = event.jbutton.button;
+			gsm->keyPressed(button);
 		}
 		else if (event.type == SDL_KEYUP)
 		{
-			int keyCode = event.key.keysym.sym;
-			gsm->keyReleased(keyCode);
+			//int keyCode = event.key.keysym.sym;
+			//gsm->keyReleased(keyCode);
+
+			int button = event.jbutton.button;
+			gsm->keyReleased(button);
 		}
 		else if (event.type == SDL_TEXTINPUT)
 		{
