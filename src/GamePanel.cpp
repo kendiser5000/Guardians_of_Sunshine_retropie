@@ -96,11 +96,11 @@ int GamePanel::run()
         deltaTime = (currTime - prevTime)/1000.0f;
 
 		//Initialize Controllers
-		if (SDL_Init( SDL_INIT_VIDEO | SDL_INIT_JOYSTICK ) < 0)
-    	{
-        	fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
-        	exit(1);
-    	}
+		// if (SDL_Init( SDL_INIT_VIDEO | SDL_INIT_JOYSTICK ) < 0)
+    	// {
+        // 	fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+        // 	exit(1);
+    	// }
 		//printf("%i joysticks were found.\n\n", SDL_NumJoysticks() );
 
     	SDL_JoystickEventState(SDL_ENABLE);
