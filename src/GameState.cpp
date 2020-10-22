@@ -1382,7 +1382,7 @@ void Level1State::hatReleased(int k)
 {
 	switch (k)
     {
-		printf("released")
+		printf("released");
         case SDLK_LEFT:
         {
             //player->setLeft(false);
