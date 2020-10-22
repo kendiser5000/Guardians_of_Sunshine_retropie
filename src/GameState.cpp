@@ -150,7 +150,7 @@ void MenuState::buttonPressed(int k)
             }
 			break;
 		}
-		case SDLK_RETURN:
+		case 9: //Start Button
 		{
 			if (currentChoice == 0)
 			{
