@@ -1445,12 +1445,10 @@ void TitleState::keyReleased(int k)
 
 void TitleState::buttonPressed(int k)
 {
-	printf("TitleState: buttonPressed %d", k);
 	switch(k)
 	{
 		case 9: //Start button
 		{	
-			printf("got here");
 			if (bgm)
 			{
 				bgm->stop();
@@ -1459,19 +1457,6 @@ void TitleState::buttonPressed(int k)
 			gsm->setState(GameStateManager::LEVEL1_STATE);
 			break;
 		}
-
-    	// case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
-		// 	if ( k == 0 ) 
-		// 	{
-		// 		if (bgm)
-		// 		{
-		// 			bgm->stop();
-		// 			bgm->close();
-		// 		}
-		// 		gsm->setState(GameStateManager::LEVEL1_STATE);
-		// 		break;
-		// 		}
-		// break;
 	}
 }
 void TitleState::buttonReleased(int k)
