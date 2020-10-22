@@ -13,6 +13,14 @@ int main(int nargs, char *args[])
 {
 	GamePanel gPanel;
 	gPanel.setWindowName("Guardians of Sunshine");
+
+	//Initialize Controllers
+	if (SDL_Init( SDL_INIT_VIDEO | SDL_INIT_JOYSTICK ) < 0)
+	{
+		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+		exit(1);
+	}
+
 	gPanel.run();
 
 
