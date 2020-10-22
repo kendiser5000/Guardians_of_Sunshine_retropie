@@ -112,8 +112,8 @@ void GamePanel::handleInputs()
 {
 	while (SDL_PollEvent(&event) != 0)
 	{
-		//printf("event type %d\n", event.type);
-		//printf("button %d\n", event.jbutton.button);
+		printf("event type %d\n", event.type);
+		printf("button %d\n", event.jbutton.button);
 
 		if (event.type == SDL_QUIT)
 		{
