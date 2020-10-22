@@ -127,7 +127,7 @@ void GamePanel::handleInputs()
 		{
 			isRunning = false;
 		}
-		else if (event.type == SDL_KEYDOWN)
+		else if (event.type == 1539) //button press
 		{
 			printf("key_down");
 			//int keyCode = event.key.keysym.sym;
@@ -136,7 +136,7 @@ void GamePanel::handleInputs()
 			int button = event.jbutton.button;
 			gsm->keyPressed(button);
 		}
-		else if (event.type == SDL_KEYUP)
+		else if (event.type == 1540) //button up
 		{
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyReleased(keyCode);
