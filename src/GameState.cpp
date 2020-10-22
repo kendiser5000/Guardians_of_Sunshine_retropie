@@ -135,7 +135,6 @@ void MenuState::hatReleased(int k)
 {
 
 }
-
 void MenuState::buttonPressed(int k)
 {
 	switch (k)
@@ -316,7 +315,6 @@ Level1State::~Level1State()
 
 	//Delete elements from lists
 }
-
 void Level1State::init()
 {
 
@@ -1055,7 +1053,6 @@ void Level1State::updateGameCamera()
     double y1 = bgTileMap->getY() - y;
     bgTileMap->setPosition((int)(tileMap->getX()+0), (int)(tileMap->getY()-66));
 }
-
 void Level1State::keyPressed(int k)
 {
 	double x = tileMap->getX();
@@ -1191,8 +1188,6 @@ void Level1State::keyReleased(int k)
         }
     }
 }
-
-
 void Level1State::buttonPressed(int k)
 {
 	double x = tileMap->getX();
@@ -1202,43 +1197,43 @@ void Level1State::buttonPressed(int k)
 	int scroll_val = -5;
 	switch (k)
     {
-        case SDLK_LEFT:
-        {
-			//player->setLeft(true);
-			gos_player->setLeft(true);
-			comboMove->setLeft(true);
-			//x -= scroll_val;
-			//x1 -= scroll_val;
-            break;
-        }
-		case SDLK_RIGHT:
-		{
-			//player->setRight(true);
-			gos_player->setRight(true);
-			comboMove->setRight(true);
-			//x += scroll_val;
-			//x1 += scroll_val;
-			break;
-		}
-		case SDLK_UP:
-		{
-			//player->setUp(true);
-			gos_player->setUp(true);
-			comboMove->setUp(true);
-			//y -= scroll_val;
-			//y1 -= scroll_val;
-			break;
-		}
-		case SDLK_DOWN:
-		{
-			//player->setDown(true);
-			gos_player->setDown(true);
-			comboMove->setDown(true);
-			//y += scroll_val;
-			//y1 += scroll_val;
-			break;
-		}
-		case SDLK_SPACE:
+        // case SDLK_LEFT:
+        // {
+		// 	//player->setLeft(true);
+		// 	gos_player->setLeft(true);
+		// 	comboMove->setLeft(true);
+		// 	//x -= scroll_val;
+		// 	//x1 -= scroll_val;
+        //     break;
+        // }
+		// case SDLK_RIGHT:
+		// {
+		// 	//player->setRight(true);
+		// 	gos_player->setRight(true);
+		// 	comboMove->setRight(true);
+		// 	//x += scroll_val;
+		// 	//x1 += scroll_val;
+		// 	break;
+		// }
+		// case SDLK_UP:
+		// {
+		// 	//player->setUp(true);
+		// 	gos_player->setUp(true);
+		// 	comboMove->setUp(true);
+		// 	//y -= scroll_val;
+		// 	//y1 -= scroll_val;
+		// 	break;
+		// }
+		// case SDLK_DOWN:
+		// {
+		// 	//player->setDown(true);
+		// 	gos_player->setDown(true);
+		// 	comboMove->setDown(true);
+		// 	//y += scroll_val;
+		// 	//y1 += scroll_val;
+		// 	break;
+		// }
+		case 0: //A button
 		{
 			//player->setJumping(true);
 			gos_player->setJumping(true);
@@ -1250,20 +1245,20 @@ void Level1State::buttonPressed(int k)
 			//player->setGliding(true);
 			break;
 		}
-		case SDLK_z:
+		case 1: //B button
 		{
 			//player->setScratching();
 			gos_player->setKicking();
 			comboMove->setSpin(true);
 			break;
 		}
-		case SDLK_x:
+		case 3: //Y button
 		{
 			//player->setFiring();
 			gos_player->bombaAction();
 			break;
 		}
-		case SDLK_RETURN:
+		case 2: //X button
 		{	
 			gos_startmenu->setVisible(true);
 			break;
@@ -1277,36 +1272,36 @@ void Level1State::buttonReleased(int k)
 {
 	switch (k)
     {
-        case SDLK_LEFT:
-        {
-            //player->setLeft(false);
-			gos_player->setLeft(false);
-            break;
-        }
-        case SDLK_RIGHT:
-        {
-            //player->setRight(false);
-			gos_player->setRight(false);
-            break;
-        }
-        case SDLK_UP:
-        {
-            //player->setUp(false);
-			gos_player->setUp(false);
-            break;
-        }
-        case SDLK_DOWN:
-        {
-            //player->setDown(false);
-			gos_player->setDown(false);
-            break;
-        }
-        case SDLK_SPACE:
+        // case SDLK_LEFT:
+        // {
+        //     //player->setLeft(false);
+		// 	gos_player->setLeft(false);
+        //     break;
+        // }
+        // case SDLK_RIGHT:
+        // {
+        //     //player->setRight(false);
+		// 	gos_player->setRight(false);
+        //     break;
+        // }
+        // case SDLK_UP:
+        // {
+        //     //player->setUp(false);
+		// 	gos_player->setUp(false);
+        //     break;
+        // }
+        // case SDLK_DOWN:
+        // {
+        //     //player->setDown(false);
+		// 	gos_player->setDown(false);
+        //     break;
+        // }
+        case 0: //A button
         {
             gos_player->setJumping(false);
             break;
         }
-        case SDLK_LSHIFT:
+        case 7: //L2 button
         {
             //player->setGliding(false);
 			bgm->stop();
@@ -1314,14 +1309,14 @@ void Level1State::buttonReleased(int k)
 			gsm->setState(GameStateManager::TITLE_STATE);
             break;
         }
-		case SDLK_RSHIFT:
+		case 8: //Select
         {
 			bgm->stop();
 			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
 			*(GamePanel::isRunningControl) = false;
             break;
         }
-		case SDLK_RETURN:
+		case 2: //X button
         {
             gos_startmenu->setVisible(false);
             break;
