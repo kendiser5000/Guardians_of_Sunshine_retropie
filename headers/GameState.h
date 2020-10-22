@@ -37,6 +37,8 @@ class GameState
 		virtual void keyReleased(int k) =0;
 		virtual void buttonPressed(int k) =0;
 		virtual void buttonReleased(int k) =0;
+		virtual void hatPressed(int k) =0;
+		virtual void hatReleased(int k) =0;
 };
 
 class MenuState : public GameState
@@ -58,6 +60,8 @@ class MenuState : public GameState
 		void keyReleased(int k);
 		void buttonPressed(int k);
 		void buttonReleased(int k);
+		void hatPressed(int k);
+		void hatReleased(int k);
 };
 
 class Level1State : public GameState
@@ -137,6 +141,8 @@ class Level1State : public GameState
         void keyReleased(int k);
 		void buttonPressed(int k);
         void buttonReleased(int k);
+		void hatPressed(int k);
+        void hatReleased(int k);
 };
 
 class TitleState : public GameState
@@ -159,6 +165,8 @@ class TitleState : public GameState
         void keyReleased(int k);
 		void buttonPressed(int k);
         void buttonReleased(int k);
+		void hatPressed(int k);
+        void hatReleased(int k);
 };
 class WinState : public GameState
 {
@@ -212,4 +220,6 @@ class WinState : public GameState
         void keyReleased(int k);
 		void buttonPressed(int k);
         void buttonReleased(int k);
+		void hatPressed(int k);
+        void hatReleased(int k);
 };

@@ -149,10 +149,23 @@ void GamePanel::handleInputs()
 			//gsm->keyReleased(keyCode);
 
 			int button = event.jhat.value;
+			/*
+			0 - nothing
+			1 - up
+			2 - right
+			8 - left
+			4 - down
+			*/
+
+
 			printf("HAT\n");
 			printf("hat: %d\nwhich: %d\nvalue %d\n", event.jhat.hat, event.jhat.which, event.jhat.value);
 			
-			gsm->buttonReleased(button);
+			if (button = 0) {
+				gsm->hatReleased(button);
+			} else {
+				gsm->hatPressed(button);
+			}
 		}
 	}
 	keyState = SDL_GetKeyboardState(NULL);

@@ -127,6 +127,14 @@ void MenuState::keyReleased(int k)
 {
 
 }
+void MenuState::hatPressed(int k)
+{
+
+}
+void MenuState::hatReleased(int k)
+{
+
+}
 
 void MenuState::buttonPressed(int k)
 {
@@ -1320,6 +1328,112 @@ void Level1State::buttonReleased(int k)
     }
 }
 
+void Level1State::hatPressed(int k)
+{
+	double x = tileMap->getX();
+	double y = tileMap->getY();
+	double x1 = bgTileMap->getX() - x;
+	double y1 = bgTileMap->getY() - y;
+	int scroll_val = -5;
+	switch (k)
+    {
+        case 8: //hat left
+        {
+			//player->setLeft(true);
+			gos_player->setLeft(true);
+			comboMove->setLeft(true);
+			//x -= scroll_val;
+			//x1 -= scroll_val;
+            break;
+        }
+		case 2: //hat right
+		{
+			//player->setRight(true);
+			gos_player->setRight(true);
+			comboMove->setRight(true);
+			//x += scroll_val;
+			//x1 += scroll_val;
+			break;
+		}
+		case 1: //hat up
+		{
+			//player->setUp(true);
+			gos_player->setUp(true);
+			comboMove->setUp(true);
+			//y -= scroll_val;
+			//y1 -= scroll_val;
+			break;
+		}
+		case 4: //hat down
+		{
+			//player->setDown(true);
+			gos_player->setDown(true);
+			comboMove->setDown(true);
+			//y += scroll_val;
+			//y1 += scroll_val;
+			break;
+		}
+	}
+	//tileMap->setPosition((int)x, (int)y);
+	//printf("x: %d, y: %d\n", (int)tileMap->getX(), (int)tileMap->getY());
+	//bgTileMap->setPosition((int)(tileMap->getX()+x1), (int)(tileMap->getY()+y1));
+}
+void Level1State::hatReleased(int k)
+{
+	switch (k)
+    {
+        case SDLK_LEFT:
+        {
+            //player->setLeft(false);
+			gos_player->setLeft(false);
+            break;
+        }
+        case SDLK_RIGHT:
+        {
+            //player->setRight(false);
+			gos_player->setRight(false);
+            break;
+        }
+        case SDLK_UP:
+        {
+            //player->setUp(false);
+			gos_player->setUp(false);
+            break;
+        }
+        case SDLK_DOWN:
+        {
+            //player->setDown(false);
+			gos_player->setDown(false);
+            break;
+        }
+        case SDLK_SPACE:
+        {
+            gos_player->setJumping(false);
+            break;
+        }
+        case SDLK_LSHIFT:
+        {
+            //player->setGliding(false);
+			bgm->stop();
+			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
+			gsm->setState(GameStateManager::TITLE_STATE);
+            break;
+        }
+		case SDLK_RSHIFT:
+        {
+			bgm->stop();
+			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
+			*(GamePanel::isRunningControl) = false;
+            break;
+        }
+		case SDLK_RETURN:
+        {
+            gos_startmenu->setVisible(false);
+            break;
+        }
+    }
+}
+
 
 TitleState::TitleState(GameStateManager *gsm_, SDL_Renderer *renderTarget_)
 {
@@ -1460,6 +1574,14 @@ void TitleState::buttonPressed(int k)
 	}
 }
 void TitleState::buttonReleased(int k)
+{
+
+}
+void TitleState::hatReleased(int k)
+{
+
+}
+void TitleState::hatPressed(int k)
 {
 
 }
@@ -1864,6 +1986,14 @@ void WinState::buttonPressed(int k)
     }
 }
 void WinState::buttonReleased(int k)
+{
+
+}
+void WinState::hatPressed(int k)
+{
+
+}
+void WinState::hatReleased(int k)
 {
 
 }

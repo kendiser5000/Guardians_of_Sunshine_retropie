@@ -41,4 +41,7 @@ class GameStateManager
 		void buttonPressed(int k);
 		void buttonReleased(int k);
 
+		void hatPressed(int k);
+		void hatReleased(int k);
+
 };
