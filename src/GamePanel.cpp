@@ -148,7 +148,7 @@ void GamePanel::handleInputs()
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyReleased(keyCode);
 
-			int button = event.jhat.hat;
+			int button = event.jhat.which;
 			printf("hat: %d", button);
 			
 			gsm->buttonReleased(button);
