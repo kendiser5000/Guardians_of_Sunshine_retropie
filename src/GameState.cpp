@@ -1445,10 +1445,12 @@ void TitleState::keyReleased(int k)
 
 void TitleState::buttonPressed(int k)
 {
+	printf("TitleState: buttonPressed %d", k);
 	switch(k)
 	{
 		case 9: //Start button
 		{	
+			printf("got here");
 			if (bgm)
 			{
 				bgm->stop();
