@@ -139,24 +139,6 @@ void MenuState::buttonPressed(int k)
 {
 	switch (k)
 	{
-		case SDLK_UP:
-		{
-			currentChoice--;
-			if (currentChoice < 0)
-			{
-				currentChoice = NUM_OPTIONS - 1;
-			}
-			break;
-		}
-		case SDLK_DOWN:
-		{
-			currentChoice++;
-            if (currentChoice >= NUM_OPTIONS)
-            {
-                currentChoice = 0;
-            }
-			break;
-		}
 		case 9: //Start button
 		{
 			printf("MenuState button %d", k);
@@ -166,7 +148,6 @@ void MenuState::buttonPressed(int k)
 			}
 			else if (currentChoice == 1)
 			{
-				//exit(0);
 				if (GamePanel::isRunningControl == NULL)
 					printf("isRunning cotrol is NULL\n");
 				*(GamePanel::isRunningControl) = false;
@@ -179,7 +160,6 @@ void MenuState::buttonReleased(int k)
 {
 
 }
-
 
 //-------------------------------------
 
@@ -1197,52 +1177,11 @@ void Level1State::buttonPressed(int k)
 	int scroll_val = -5;
 	switch (k)
     {
-        // case SDLK_LEFT:
-        // {
-		// 	//player->setLeft(true);
-		// 	gos_player->setLeft(true);
-		// 	comboMove->setLeft(true);
-		// 	//x -= scroll_val;
-		// 	//x1 -= scroll_val;
-        //     break;
-        // }
-		// case SDLK_RIGHT:
-		// {
-		// 	//player->setRight(true);
-		// 	gos_player->setRight(true);
-		// 	comboMove->setRight(true);
-		// 	//x += scroll_val;
-		// 	//x1 += scroll_val;
-		// 	break;
-		// }
-		// case SDLK_UP:
-		// {
-		// 	//player->setUp(true);
-		// 	gos_player->setUp(true);
-		// 	comboMove->setUp(true);
-		// 	//y -= scroll_val;
-		// 	//y1 -= scroll_val;
-		// 	break;
-		// }
-		// case SDLK_DOWN:
-		// {
-		// 	//player->setDown(true);
-		// 	gos_player->setDown(true);
-		// 	comboMove->setDown(true);
-		// 	//y += scroll_val;
-		// 	//y1 += scroll_val;
-		// 	break;
-		// }
 		case 0: //A button
 		{
 			//player->setJumping(true);
 			gos_player->setJumping(true);
 			comboMove->setJumping(true);
-			break;
-		}
-		case SDLK_LSHIFT:
-		{
-			//player->setGliding(true);
 			break;
 		}
 		case 1: //B button
@@ -1272,30 +1211,6 @@ void Level1State::buttonReleased(int k)
 {
 	switch (k)
     {
-        // case SDLK_LEFT:
-        // {
-        //     //player->setLeft(false);
-		// 	gos_player->setLeft(false);
-        //     break;
-        // }
-        // case SDLK_RIGHT:
-        // {
-        //     //player->setRight(false);
-		// 	gos_player->setRight(false);
-        //     break;
-        // }
-        // case SDLK_UP:
-        // {
-        //     //player->setUp(false);
-		// 	gos_player->setUp(false);
-        //     break;
-        // }
-        // case SDLK_DOWN:
-        // {
-        //     //player->setDown(false);
-		// 	gos_player->setDown(false);
-        //     break;
-        // }
         case 0: //A button
         {
             gos_player->setJumping(false);
@@ -1303,13 +1218,12 @@ void Level1State::buttonReleased(int k)
         }
         case 7: //L2 button
         {
-            //player->setGliding(false);
 			bgm->stop();
 			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
 			gsm->setState(GameStateManager::TITLE_STATE);
             break;
         }
-		case 8: //Select
+		case 8: //Select button
         {
 			bgm->stop();
 			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
@@ -1323,7 +1237,6 @@ void Level1State::buttonReleased(int k)
         }
     }
 }
-
 void Level1State::hatPressed(int k)
 {
 	double x = tileMap->getX();
@@ -1335,8 +1248,6 @@ void Level1State::hatPressed(int k)
     {
 		case 0: //hat left
         {
-			printf("stop");
-			//player->setLeft(true);
 			gos_player->setLeft(false);
 			comboMove->setLeft(false);
 			gos_player->setRight(false);
@@ -1345,112 +1256,40 @@ void Level1State::hatPressed(int k)
 			comboMove->setUp(false);
 			gos_player->setDown(false);
 			comboMove->setDown(false);
-			//x -= scroll_val;
-			//x1 -= scroll_val;
             break;
         }
         case 8: //hat left
-        {
-			printf("left");
-			//player->setLeft(true);
+        {;
 			gos_player->setLeft(true);
 			comboMove->setLeft(true);
-			//x -= scroll_val;
-			//x1 -= scroll_val;
             break;
         }
 		case 2: //hat right
 		{
-			printf("right");
-			//player->setRight(true);
 			gos_player->setRight(true);
 			comboMove->setRight(true);
-			//x += scroll_val;
-			//x1 += scroll_val;
 			break;
 		}
 		case 1: //hat up
 		{
-			printf("up");
-			//player->setUp(true);
 			gos_player->setUp(true);
 			comboMove->setUp(true);
-			//y -= scroll_val;
-			//y1 -= scroll_val;
 			break;
 		}
 		case 4: //hat down
 		{
-			printf("down");
-			//player->setDown(true);
 			gos_player->setDown(true);
 			comboMove->setDown(true);
-			//y += scroll_val;
-			//y1 += scroll_val;
 			break;
 		}
 	}
-	//tileMap->setPosition((int)x, (int)y);
-	//printf("x: %d, y: %d\n", (int)tileMap->getX(), (int)tileMap->getY());
-	//bgTileMap->setPosition((int)(tileMap->getX()+x1), (int)(tileMap->getY()+y1));
 }
 void Level1State::hatReleased(int k)
 {
-	switch (k)
-    {
-		printf("released");
-        case SDLK_LEFT:
-        {
-            //player->setLeft(false);
-			gos_player->setLeft(false);
-            break;
-        }
-        case SDLK_RIGHT:
-        {
-            //player->setRight(false);
-			gos_player->setRight(false);
-            break;
-        }
-        case SDLK_UP:
-        {
-            //player->setUp(false);
-			gos_player->setUp(false);
-            break;
-        }
-        case SDLK_DOWN:
-        {
-            //player->setDown(false);
-			gos_player->setDown(false);
-            break;
-        }
-        case SDLK_SPACE:
-        {
-            gos_player->setJumping(false);
-            break;
-        }
-        case SDLK_LSHIFT:
-        {
-            //player->setGliding(false);
-			bgm->stop();
-			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
-			gsm->setState(GameStateManager::TITLE_STATE);
-            break;
-        }
-		case SDLK_RSHIFT:
-        {
-			bgm->stop();
-			level_sounds[LEVEL_LOSE_SFX]->stop(-1);
-			*(GamePanel::isRunningControl) = false;
-            break;
-        }
-		case SDLK_RETURN:
-        {
-            gos_startmenu->setVisible(false);
-            break;
-        }
-    }
+
 }
 
+//-------------------------------------
 
 TitleState::TitleState(GameStateManager *gsm_, SDL_Renderer *renderTarget_)
 {
@@ -1573,7 +1412,6 @@ void TitleState::keyReleased(int k)
 {
 
 }
-
 void TitleState::buttonPressed(int k)
 {
 	switch(k)
@@ -1983,19 +1821,18 @@ void WinState::keyReleased(int k)
 {
 
 }
-
 void WinState::buttonPressed(int k)
 {
 	if (state != FINAL)
 		return;
 	switch(k)
     {
-        case SDLK_RETURN:
+        case 9: //Start Button
         {
             gsm->setState(GameStateManager::TITLE_STATE);
             break;
         }
-		case SDLK_RSHIFT:
+		case 8: //Select Button
         {
             *(GamePanel::isRunningControl) = false;
             break;
