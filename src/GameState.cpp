@@ -1335,6 +1335,7 @@ void Level1State::hatPressed(int k)
     {
         case 8: //hat left
         {
+			printf("left");
 			//player->setLeft(true);
 			gos_player->setLeft(true);
 			comboMove->setLeft(true);
@@ -1344,6 +1345,7 @@ void Level1State::hatPressed(int k)
         }
 		case 2: //hat right
 		{
+			printf("right");
 			//player->setRight(true);
 			gos_player->setRight(true);
 			comboMove->setRight(true);
@@ -1353,6 +1355,7 @@ void Level1State::hatPressed(int k)
 		}
 		case 1: //hat up
 		{
+			printf("up");
 			//player->setUp(true);
 			gos_player->setUp(true);
 			comboMove->setUp(true);
@@ -1362,6 +1365,7 @@ void Level1State::hatPressed(int k)
 		}
 		case 4: //hat down
 		{
+			printf("down");
 			//player->setDown(true);
 			gos_player->setDown(true);
 			comboMove->setDown(true);
@@ -1378,6 +1382,7 @@ void Level1State::hatReleased(int k)
 {
 	switch (k)
     {
+		printf("released")
         case SDLK_LEFT:
         {
             //player->setLeft(false);
