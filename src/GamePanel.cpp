@@ -101,7 +101,7 @@ int GamePanel::run()
         	fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
         	exit(1);
     	}
-		printf("%i joysticks were found.\n\n", SDL_NumJoysticks() );
+		//printf("%i joysticks were found.\n\n", SDL_NumJoysticks() );
 
     	SDL_JoystickEventState(SDL_ENABLE);
     	joystick = SDL_JoystickOpen(0); //joystick declared globally
