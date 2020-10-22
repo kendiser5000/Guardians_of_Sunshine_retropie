@@ -158,7 +158,14 @@ void MenuState::buttonPressed(int k)
 }
 void MenuState::buttonReleased(int k)
 {
-
+	switch (k)
+    {
+		case 8: //Select button
+        {
+			*(GamePanel::isRunningControl) = false;
+            break;
+        }
+	}
 }
 
 //-------------------------------------
@@ -1203,9 +1210,6 @@ void Level1State::buttonPressed(int k)
 			break;
 		}
 	}
-	//tileMap->setPosition((int)x, (int)y);
-	//printf("x: %d, y: %d\n", (int)tileMap->getX(), (int)tileMap->getY());
-	//bgTileMap->setPosition((int)(tileMap->getX()+x1), (int)(tileMap->getY()+y1));
 }
 void Level1State::buttonReleased(int k)
 {
