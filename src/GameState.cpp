@@ -160,6 +160,7 @@ void MenuState::buttonPressed(int k)
 		}
 		case 9: //Start button
 		{
+			printf("MenuState button %d", k);
 			if (currentChoice == 0)
 			{
 				gsm->setState(GameStateManager::LEVEL1_STATE);
