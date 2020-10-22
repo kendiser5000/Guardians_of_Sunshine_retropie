@@ -1333,6 +1333,22 @@ void Level1State::hatPressed(int k)
 	int scroll_val = -5;
 	switch (k)
     {
+		case 0: //hat left
+        {
+			printf("stop");
+			//player->setLeft(true);
+			gos_player->setLeft(false);
+			comboMove->setLeft(false);
+			gos_player->setRight(false);
+			comboMove->setRight(false);
+			gos_player->setUp(false);
+			comboMove->setUp(false);
+			gos_player->setDown(false);
+			comboMove->setDown(false);
+			//x -= scroll_val;
+			//x1 -= scroll_val;
+            break;
+        }
         case 8: //hat left
         {
 			printf("left");
