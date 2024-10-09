@@ -1215,7 +1215,7 @@ void Level1State::buttonReleased(int k)
 {
 	switch (k)
     {
-        case 0: //A button
+        case 1: //A button
         {
             gos_player->setJumping(false);
             break;
@@ -1234,7 +1234,7 @@ void Level1State::buttonReleased(int k)
 			*(GamePanel::isRunningControl) = false;
             break;
         }
-		case 2: //X button
+		case 0: //X button
         {
             gos_startmenu->setVisible(false);
             break;

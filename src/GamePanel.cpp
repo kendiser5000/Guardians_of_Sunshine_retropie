@@ -119,7 +119,7 @@ void GamePanel::handleInputs()
 		{
 			isRunning = false;
 		}
-		else if (event.type == 1539) //button press
+		else if (event.type == SDL_JOYBUTTONDOWN) //button press down
 		{
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyPressed(keyCode);
@@ -129,7 +129,7 @@ void GamePanel::handleInputs()
 
 			gsm->buttonPressed(button);
 		}
-		else if (event.type == 1540) //button up
+		else if (event.type == SDL_JOYBUTTONUP) //button up
 		{
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyReleased(keyCode);
@@ -143,12 +143,13 @@ void GamePanel::handleInputs()
 		{
 			char *text = event.text.text;
 		}
-		else if (event.type == 1538) //hat
+		else if (event.type == SDL_JOYAXISMOTION) //hat
 		{
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyReleased(keyCode);
 
 			int button = event.jhat.value;
+			int x = event.jhat.
 			/*
 			0 - nothing
 			1 - up
@@ -157,9 +158,8 @@ void GamePanel::handleInputs()
 			4 - down
 			*/
 
-
-			printf("HAT\n");
-			printf("hat: %d\nwhich: %d\nvalue %d\n", event.jhat.hat, event.jhat.which, event.jhat.value);
+			printf("JOYSTICK\n");
+			printf("jaxis: %d\n", event.jaxis.value);
 			gsm->hatPressed(button);
 		}
 	}
