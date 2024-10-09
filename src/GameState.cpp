@@ -1184,14 +1184,19 @@ void Level1State::buttonPressed(int k)
 	int scroll_val = -5;
 	switch (k)
     {
-		case 0: //A button
+		case 0: //X button
+		{	
+			gos_startmenu->setVisible(true);
+			break;
+		}
+		case 1: //A button
 		{
 			//player->setJumping(true);
 			gos_player->setJumping(true);
 			comboMove->setJumping(true);
 			break;
 		}
-		case 1: //B button
+		case 2: //B button
 		{
 			//player->setScratching();
 			gos_player->setKicking();
@@ -1202,11 +1207,6 @@ void Level1State::buttonPressed(int k)
 		{
 			//player->setFiring();
 			gos_player->bombaAction();
-			break;
-		}
-		case 2: //X button
-		{	
-			gos_startmenu->setVisible(true);
 			break;
 		}
 	}
