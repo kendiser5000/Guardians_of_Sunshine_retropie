@@ -147,8 +147,29 @@ void GamePanel::handleInputs()
 		{
 			//int keyCode = event.key.keysym.sym;
 			//gsm->keyReleased(keyCode);
+			int val = 0;
 
-			// int button = event.jhat.value;
+			// button = 0 --> L/R
+			// button = 1 --> Up/Down
+			int button = event.jhat.value;
+
+			// Left
+			if (button == 0 && event.jaxis.value < 0){
+				val = 8;
+			// right
+			} else if (button == 0 && event.jaxis.value > 0) {
+				val = 2;
+			// up
+			} else if (button == 1 && event.jaxis.value < 0) {
+				val = 1;
+			// down
+			} else if (button == 1 && event.jaxis.value > 0) {
+				val = 4;
+			}
+
+			printf("JOYSTICK\n");
+			printf("button: %d, jaxis: %d\n", button, event.jaxis.value);
+			
 			/*
 			0 - nothing
 			1 - up
@@ -156,10 +177,7 @@ void GamePanel::handleInputs()
 			8 - left
 			4 - down
 			*/
-
-			printf("JOYSTICK\n");
-			printf("jaxis: %d\n", event.jaxis.value);
-			gsm->hatPressed(button);
+			gsm->hatPressed(val);
 		}
 	}
 	keyState = SDL_GetKeyboardState(NULL);
