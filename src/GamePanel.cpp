@@ -7,6 +7,8 @@ bool *GamePanel::isRunningControl;
 int GamePanel::WINDOW_WIDTH;
 int GamePanel::WINDOW_HEIGHT;
 SDL_Joystick *joystick;
+SDL_Joystick *joystick1;
+SDL_Joystick *joystick2;
 
 GamePanel::GamePanel()
 {
@@ -97,6 +99,8 @@ int GamePanel::run()
 
     	SDL_JoystickEventState(SDL_ENABLE);
     	joystick = SDL_JoystickOpen(0); //joystick declared globally
+    	joystick1 = SDL_JoystickOpen(1); //joystick declared globally
+    	joystick2 = SDL_JoystickOpen(2); //joystick declared globally
 
 		handleInputs(); //Init gamepad here?
 		update();
