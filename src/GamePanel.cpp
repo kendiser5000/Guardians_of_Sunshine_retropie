@@ -101,6 +101,13 @@ int GamePanel::run()
     	joystick = SDL_JoystickOpen(0); //joystick declared globally
     	joystick1 = SDL_JoystickOpen(1); //joystick declared globally
     	joystick2 = SDL_JoystickOpen(2); //joystick declared globally
+		printf("Number of joysticks: %i\n", SDL_NumJoysticks());
+		printf("Opening joysticks:\n");
+		printf("    %s\n", SDL_JoystickName(joystick));
+		printf("    %s\n", SDL_JoystickName(joystick1));
+		printf("    %s\n", SDL_JoystickName(joystick2));
+
+
 
 		handleInputs(); //Init gamepad here?
 		update();
