@@ -1250,7 +1250,7 @@ void Level1State::hatPressed(int k)
 	int scroll_val = -5;
 	switch (k)
     {
-		case 0: //hat left
+		case 0: //hat release
         {
 			gos_player->setLeft(false);
 			comboMove->setLeft(false);
@@ -1262,25 +1262,25 @@ void Level1State::hatPressed(int k)
 			comboMove->setDown(false);
             break;
         }
-        case 8: //hat left
+        case 8: //hat left press
         {;
 			gos_player->setLeft(true);
 			comboMove->setLeft(true);
             break;
         }
-		case 2: //hat right
+		case 2: //hat right press
 		{
 			gos_player->setRight(true);
 			comboMove->setRight(true);
 			break;
 		}
-		case 1: //hat up
+		case 1: //hat up press
 		{
 			gos_player->setUp(true);
 			comboMove->setUp(true);
 			break;
 		}
-		case 4: //hat down
+		case 4: //hat down press
 		{
 			gos_player->setDown(true);
 			comboMove->setDown(true);
