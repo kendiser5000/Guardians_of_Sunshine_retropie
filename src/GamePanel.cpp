@@ -172,7 +172,7 @@ void GamePanel::handleInputs()
 
 			// go left
 			if (button == 4) {
-				gsm->hatpressed(8);
+				gsm->hatPressed(8);
 			// go right
 			} else if (button == 5) {
 				gsm->hatPressed(2);
