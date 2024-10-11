@@ -130,30 +130,6 @@ void GamePanel::handleInputs()
 		{
 			isRunning = false;
 		}
-		else if (event.type == SDL_JOYBUTTONDOWN) //button press down
-		{
-			//int keyCode = event.key.keysym.sym;
-			//gsm->keyPressed(keyCode);
-
-			int button = event.jbutton.button;
-			printf("key_down: %d", button);
-
-			gsm->buttonPressed(button);
-		}
-		else if (event.type == SDL_JOYBUTTONUP) //button up
-		{
-			//int keyCode = event.key.keysym.sym;
-			//gsm->keyReleased(keyCode);
-
-			int button = event.jbutton.button;
-			printf("key_up: %d", button);
-			
-			gsm->buttonReleased(button);
-		}
-		else if (event.type == SDL_TEXTINPUT)
-		{
-			char *text = event.text.text;
-		}
 		else if (event.type == SDL_JOYAXISMOTION) //hat
 		{
 			//int keyCode = event.key.keysym.sym;
@@ -189,6 +165,51 @@ void GamePanel::handleInputs()
 			4 - down
 			*/
 			gsm->hatPressed(val);
+		}
+		else if (event.type == SDL_JOYBUTTONDOWN && (event.jbutton.button == 4 || event.jbutton.button == 5)) {
+			int button = event.jbutton.button;
+			printf("Key press %d, button");
+
+			// go left
+			if (button == 4) {
+				gsm->hatpressed(8);
+			// go right
+			} else if (button == 5) {
+				gsm->hatPressed(2);
+			} else {
+				gsm->hatPressed(0);
+				printf("Wat da!!!!");
+			}
+		}
+		else if (event.type == SDL_JOYBUTTONDOWN) //button press down
+		{
+			//int keyCode = event.key.keysym.sym;
+			//gsm->keyPressed(keyCode);
+
+			int button = event.jbutton.button;
+			printf("key_down: %d", button);
+
+			gsm->buttonPressed(button);
+		}
+		else if (event.type == SDL_JOYBUTTONUP && (event.jbutton.button == 4 || event.jbutton.button == 5)) {
+			int button = event.jbutton.button;
+			printf("Key release %d, button");
+			printf("No left or right pressed now");
+			gsm->hatPressed(0);
+		}
+		else if (event.type == SDL_JOYBUTTONUP) //button up
+		{
+			//int keyCode = event.key.keysym.sym;
+			//gsm->keyReleased(keyCode);
+
+			int button = event.jbutton.button;
+			printf("key_up: %d", button);
+			
+			gsm->buttonReleased(button);
+		}
+		else if (event.type == SDL_TEXTINPUT)
+		{
+			char *text = event.text.text;
 		}
 	}
 	keyState = SDL_GetKeyboardState(NULL);
