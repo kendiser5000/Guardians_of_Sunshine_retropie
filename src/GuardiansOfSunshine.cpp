@@ -20,13 +20,6 @@ int main(int nargs, char *args[])
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}
-	
-	printf("Number of joysticks: %i\n", SDL_NumJoysticks());
-	printf("Opening joysticks:\n");
-    for(int i=0; i < SDL_NumJoysticks(); i++ ) 
-    {
-        printf("    %s\n", SDL_JoystickName(i));
-    }
 
 	gPanel.run();
 
