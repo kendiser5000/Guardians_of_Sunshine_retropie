@@ -23,10 +23,10 @@ int main(int nargs, char *args[])
 	
 	printf("Number of joysticks: %i\n", SDL_NumJoysticks());
 	printf("Opening joysticks:\n");
-	for (int i = 0; i < SDL_NumJoysticks(); i++) 
-	{
-		printf("  name: %s\n", SDL_JoystickName(i));
-	}
+    for(int i=0; i < SDL_NumJoysticks(); i++ ) 
+    {
+        printf("    %s\n", SDL_JoystickName(i));
+    }
 
 	gPanel.run();
 
