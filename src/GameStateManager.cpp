@@ -41,6 +41,12 @@ void GameStateManager::setState(int state)
 	loadState(currentState);
 	gameStates[currentState]->init();
 }
+
+int GameStateManager::getState(void)
+{
+	return currentState;
+}
+
 void GameStateManager::update()
 {
 	gameStates[currentState]->update();

@@ -32,6 +32,7 @@ class GameStateManager
 		void setScore(int s) {score = s;}
 
 		void setState(int state);
+		int getState(void);
 		void update();
 		void draw();
 
