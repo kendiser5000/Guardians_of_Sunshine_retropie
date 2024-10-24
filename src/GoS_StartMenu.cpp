@@ -40,10 +40,10 @@ GoS_StartMenu::GoS_StartMenu(SDL_Renderer *renderTarget_, int x, int y)
 
 	combo_text = new Letters(renderTarget, "COMBO MOVE", 3, 15, 17);
 
-	controls_jump = new Letters(renderTarget, "SPACE", 3, 15, 20+37);
-	controls_walk = new Letters(renderTarget, "ARROWS", 3, 15, 20+67);
-	controls_kick = new Letters(renderTarget, "Z", 3, 120, 20+37);
-	controls_bomba = new Letters(renderTarget, "X", 3, 120, 20+67);
+	controls_jump = new Letters(renderTarget, "A", 3, 15, 20+37);
+	controls_walk = new Letters(renderTarget, "D PAD", 3, 15, 20+67);
+	controls_kick = new Letters(renderTarget, "B", 3, 120, 20+37);
+	controls_bomba = new Letters(renderTarget, "Y", 3, 120, 20+67);
 
 
 

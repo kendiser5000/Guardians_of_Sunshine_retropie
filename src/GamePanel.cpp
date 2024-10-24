@@ -166,7 +166,13 @@ void GamePanel::handleInputs()
 			*/
 			gsm->hatPressed(val);
 		}
-		else if (event.type == SDL_JOYBUTTONDOWN && (event.jbutton.button == 4 || event.jbutton.button == 5)) {
+		else if (event.type == SDL_JOYBUTTONUP && (event.jbutton.button == 4 || event.jbutton.button == 5 || event.jbutton.button == 8 || event.jbutton.button == 9)) {
+			int button = event.jbutton.button;
+			printf("Key release %d, button");
+			printf("No left or right pressed now");
+			gsm->hatPressed(0);
+		}
+		else if (event.type == SDL_JOYBUTTONDOWN && (event.jbutton.button == 4 || event.jbutton.button == 5 || event.jbutton.button == 8 || event.jbutton.button == 9)) {
 			int button = event.jbutton.button;
 			printf("Key press %d, button");
 
@@ -176,7 +182,15 @@ void GamePanel::handleInputs()
 			// go right
 			} else if (button == 5) {
 				gsm->hatPressed(2);
-			} else {
+			// go down
+			} else if (button == 8) {
+				gsm->hatPressed(1);
+			}
+			// go up
+			else if (button == 9) {
+				gsm->hatPressed(4)
+			}
+			else {
 				gsm->hatPressed(0);
 				printf("Wat da!!!!");
 			}
@@ -190,12 +204,6 @@ void GamePanel::handleInputs()
 			printf("key_down: %d", button);
 
 			gsm->buttonPressed(button);
-		}
-		else if (event.type == SDL_JOYBUTTONUP && (event.jbutton.button == 4 || event.jbutton.button == 5)) {
-			int button = event.jbutton.button;
-			printf("Key release %d, button");
-			printf("No left or right pressed now");
-			gsm->hatPressed(0);
 		}
 		else if (event.type == SDL_JOYBUTTONUP) //button up
 		{
