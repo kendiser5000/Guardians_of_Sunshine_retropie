@@ -188,7 +188,7 @@ void GamePanel::handleInputs()
 			}
 			// go up
 			else if (button == 9) {
-				gsm->hatPressed(4)
+				gsm->hatPressed(4);
 			}
 			else {
 				gsm->hatPressed(0);
