@@ -182,13 +182,13 @@ void GamePanel::handleInputs()
 			// go right
 			} else if (button == 5) {
 				gsm->hatPressed(2);
-			// go down
-			} else if (button == 8) {
-				gsm->hatPressed(1);
-			}
 			// go up
-			else if (button == 9) {
+			} else if (button == 8) {
 				gsm->hatPressed(4);
+			}
+			// go down
+			else if (button == 9) {
+				gsm->hatPressed(1);
 			}
 			else {
 				gsm->hatPressed(0);
